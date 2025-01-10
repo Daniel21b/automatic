@@ -1,0 +1,89 @@
+.app {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.app-header h1 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.stage-info {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+}
+
+.app-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.challenge-container {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.challenge-description {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.progress-indicator {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.progress-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #ddd;
+  transition: all 0.3s ease;
+}
+
+.progress-dot.active {
+  background-color: #3498db;
+  transform: scale(1.2);
+}
+
+.progress-dot.completed {
+  background-color: #2ecc71;
+}
+
+.password-reveal {
+  text-align: center;
+  padding: 40px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.password-reveal button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #3498db;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.password-reveal button:hover {
+  background-color: #2980b9;
+}
