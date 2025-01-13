@@ -48,7 +48,7 @@ function App() {
       <div className="app">
         <div className="password-reveal">
           <h2>Access Granted</h2>
-          <p>Your password is: [r85C57l9MYVj&*oD9]</p>
+          <p>Your password is: {process.env.REACT_APP_SECRET_PASSWORD || '[Password Not Configured]'}</p>
           <button 
             onClick={() => {
               setStage(0);
