@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TypingChallenge from './components/TypingChallenge';
 import MathChallenge from './components/MathChallenge';
 import PuzzleChallenge from './components/PuzzleChallenge';
@@ -10,12 +10,30 @@ function App() {
   const [stage, setStage] = useState(0);
   const [isWaiting, setIsWaiting] = useState(false);
 
-  // Move useEffect to the top level
-  React.useEffect(() => {
+  // Add this function to send email
+  const sendEmail = () => {
+    const templateParams = {
+      message: "The password was accessed",
+      access_time: new Date().toLocaleString()
+    };
+
+    emailjs.send(
+      process.env.REACT_APP_EMAILJS_SERVICE_ID,
+      process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+      templateParams,
+      process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+    ).then(
+      (response) => console.log('Email sent successfully:', response),
+      (error) => console.error('Failed to send email:', error)
+    );
+  };
+
+  // Fixed useEffect
+  useEffect(() => {
     if (stage >= stages.length) {
       sendEmail();
     }
-  }, [stage]); // Add stage as dependency
+  }, [stage]); // sendEmail is defined in the component scope, so it's stable
 
   // Define the challenge stages and their configurations
   const stages = [
@@ -48,24 +66,6 @@ function App() {
   const handleTimerComplete = () => {
     setIsWaiting(false);
     setStage(stage + 1);
-  };
-
-  // Add this function to send email
-  const sendEmail = () => {
-    const templateParams = {
-      message: "The password was accessed",
-      access_time: new Date().toLocaleString()
-    };
-
-    emailjs.send(
-      process.env.REACT_APP_EMAILJS_SERVICE_ID,
-      process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
-      templateParams,
-      process.env.REACT_APP_EMAILJS_PUBLIC_KEY
-    ).then(
-      (response) => console.log('Email sent successfully:', response),
-      (error) => console.error('Failed to send email:', error)
-    );
   };
 
   // Show final password screen if all stages are complete
