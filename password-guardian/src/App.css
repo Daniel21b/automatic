@@ -36,3 +36,31 @@
     transform: rotate(360deg);
   }
 }
+
+/* Mobile-specific styles */
+@media screen and (max-width: 768px) {
+  .app {
+    padding: 10px;
+  }
+
+  .challenge-container {
+    width: 90%;
+    margin: 10px auto;
+    padding: 15px;
+  }
+
+  .app-header h1 {
+    font-size: 24px;
+  }
+
+  .challenge-description {
+    font-size: 16px;
+  }
+
+  /* Make buttons larger for touch targets */
+  button {
+    min-height: 44px;
+    padding: 10px 20px;
+    margin: 5px;
+  }
+}
